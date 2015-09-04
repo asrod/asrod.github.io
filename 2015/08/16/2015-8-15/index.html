@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>互联网还有安全吗？从一次简单的爆破密码想到 | Evan的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是我去年写的一篇小文章，贴在这里也算是测试一下吧 
+
+2014年5月14日，大清早习惯性地登录知乎，就不经意的看见有人说小米的被脱裤（数据库泄漏）了，身为小米的用户，紧张感油然而生，赶紧打开乌云网，看看是啥漏洞，果然，800万的用户数据泄漏，作为一个网络安全专业相关学生，敏感（wei suo ）的心理让我找到了神秘的xiaomi.rar PS :这个小技巧各位不知道的同学也可以试试，可以找到各种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="互联网还有安全吗？从一次简单的爆破密码想到">
+<meta property="og:url" content="http://yoursite.com/2015/08/16/2015-8-15/index.html">
+<meta property="og:site_name" content="Evan的博客">
+<meta property="og:description" content="这是我去年写的一篇小文章，贴在这里也算是测试一下吧 
+
+2014年5月14日，大清早习惯性地登录知乎，就不经意的看见有人说小米的被脱裤（数据库泄漏）了，身为小米的用户，紧张感油然而生，赶紧打开乌云网，看看是啥漏洞，果然，800万的用户数据泄漏，作为一个网络安全专业相关学生，敏感（wei suo ）的心理让我找到了神秘的xiaomi.rar PS :这个小技巧各位不知道的同学也可以试试，可以找到各种">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/4.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/5.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/6.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/7.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/8.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/9.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/10.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/11.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2015-8-16/12.jpg">
+<meta property="og:updated_time" content="2015-09-02T01:57:47.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="互联网还有安全吗？从一次简单的爆破密码想到">
+<meta name="twitter:description" content="这是我去年写的一篇小文章，贴在这里也算是测试一下吧 
+
+2014年5月14日，大清早习惯性地登录知乎，就不经意的看见有人说小米的被脱裤（数据库泄漏）了，身为小米的用户，紧张感油然而生，赶紧打开乌云网，看看是啥漏洞，果然，800万的用户数据泄漏，作为一个网络安全专业相关学生，敏感（wei suo ）的心理让我找到了神秘的xiaomi.rar PS :这个小技巧各位不知道的同学也可以试试，可以找到各种">
+  
+    <link rel="alternative" href="/atom.xml" title="Evan的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Evan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">技术 生活 随想</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/asrod" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://www.weibo.com/2174982417" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/huyifei1994" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/yifei1994" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/密码/" style="font-size: 10px;">密码</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.libowei.net/">李博伟博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Evan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/images/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Evan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">技术 生活 随想</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/asrod" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://www.weibo.com/2174982417" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/huyifei1994" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/yifei1994" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-8-15" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/16/2015-8-15/" class="article-date">
+  	<time datetime="2015-08-16T05:52:42.000Z" itemprop="datePublished">2015-08-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      互联网还有安全吗？从一次简单的爆破密码想到
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码/">密码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小米/">小米</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这是我去年写的一篇小文章，贴在这里也算是测试一下吧 </p>
+</blockquote>
+<p>2014年5月14日，大清早习惯性地登录知乎，就不经意的看见有人说小米的被脱裤（数据库泄漏）了，身为小米的用户，紧张感油然而生，赶紧打开乌云网，看看是啥漏洞，果然，800万的用户数据泄漏，作为一个网络安全专业相关学生，敏感（wei suo ）的心理让我找到了神秘的xiaomi.rar PS :这个小技巧各位不知道的同学也可以试试，可以找到各种资源<br><img src="/images/2015-8-16/1.jpg" alt=""></p>
+<p>经过紧张的下载的过程，我把400余MB的xiaomi.rar下载了下来<br><strong>解压</strong><br><img src="/images/2015-8-16/2.jpg" alt=""><br>我们看到了数据库的文件</p>
+<p>接下来，我们把三个可爱的小家伙导入我们的本地数据库中</p>
+<a id="more"></a>
+<p><img src="/images/2015-8-16/3.jpg" alt=""></p>
+<p>哇，我们看到了828万余条数据，1.3GB，小米裤子真是被脱干净了</p>
+<p>我们简单查询一下，看到了一些数据，用户名 密码，email和ip地址</p>
+<p><img src="/images/2015-8-16/4.jpg" alt=""></p>
+<p>密码是乱码，估计是加密的了</p>
+<p>甚至还有小米总裁雷军的帐号，哈哈哈</p>
+<p><img src="/images/2015-8-16/5.jpg" alt=""></p>
+<p>小米公司的声明出来了，我们看一下</p>
+<p><img src="/images/2015-8-16/6.jpg" alt=""></p>
+<p>原来是<strong>独立salt单向哈希值 </strong><br>原来小米是采取这种方法加密，小米早前使用开源的discuz建站，密码存储形式也是显而易见咯 MD5(MD5(PASS).salt)；</p>
+<p>现在找准了方向我们开始想办法爆破咯</p>
+<p>首先，找一些字典</p>
+<p><img src="/images/2015-8-16/7.jpg" alt=""></p>
+<p>我从数据库中导出了三万条带有QQ邮箱的数据，以供测试</p>
+<p>开始破解密码了</p>
+<p><img src="/images/2015-8-16/8.jpg" alt=""></p>
+<p>我这里只截了运行1分18秒的图片，我们看到已经破解出了620个密码了</p>
+<p>而且我是用CPU带起来破解的，没办法GPU太渣，不支持</p>
+<p>当然这么快被破解的，都是一些极弱的密码</p>
+<p><img src="/images/2015-8-16/9.jpg" alt=""></p>
+<p>后面还有很多123456，屏幕就这么大没法截图了。。。</p>
+<p>对对对，你没看错，还有这么多人用123456这种密码！！！我真的不知道说什么好了</p>
+<p>我随便选一个稍微复杂一点的密码试一下</p>
+<p><img src="/images/2015-8-16/10.jpg" alt=""><br><img src="/images/2015-8-16/11.jpg" alt=""></p>
+<p>我们找到他的QQ邮箱测试一下（<strong>因为很多人的大部分账户密码是相同的</strong>）</p>
+<p><img src="/images/2015-8-16/12.jpg" alt=""></p>
+<p>最后谈一下感想，也点一下题啊：互联网安全吗？</p>
+<p>答案是不安全，之前天涯和CSDN都是泄漏过数据库的，其中账户密码都是明文存放的。。。。不信大家可以百度“社工库”，查查你的帐号，<br>再看看你的密码是不是已经泄漏了，如果泄漏的密码你现在还在用，那。。。。（你懂得）</p>
+<p>小米这次的泄漏其实最危险，虽然说是2012年8月之前的帐号，但考虑到“小米云服务”，其实这是对个人隐私的潜在风险极大，我现在联系人，短信，照片，应用数据，便签，甚至我听的音乐都被小米云服务同步着在，如果某某人的小米帐号被看到了，云服务上的内容被看到了，简直就是被扒光了衣服啊。而且，正如我之前测试的那位无辜的用户，他的小米账户密码和QQ密码竟然是一样的，这就是非常非常危险。</p>
+<p>你觉得我电脑有360，有金山毒霸，我高枕无忧啦，但是你有没有想过你账户的数据库泄漏了呢？？？就向这次一样，我这样一个菜鸟都能轻松找到密码，何况专门从事黑色产业链的人呢？</p>
+<p>所以为了大家的账户安全，我有一下几点建议，大家可以参考参考：</p>
+<ol>
+<li>密码一定要复杂,从这次破解大家也能看到，简单的纯数字密码是不堪一击的，短密码也是不堪一击的，复杂复杂再复杂,是构建密码的第一要素。</li>
+<li>密码是和自己身份信息有关一定不能太明显，比如名字缩写+生日就是字典生成器第一个生成的密码，你可以通过一些奇怪的组合变换这种密码，就看大家的想象力咯，不过最好还是和自己名字，生日，手机号等容易获取的信息无关，可以找一些别人不知道，自己有记得很清楚的信息作为密码啊，比如我第一次和我女神表白（被拒绝）的日子啊，什么的</li>
+<li>不要把所有帐号的密码都设置成一样的，那就会像这位用户一样，小米密码泄漏了， QQ帐号不保，如果支付宝什么的都一样。。。那就不是简单的隐私泄漏了。</li>
+<li>不要过分信任某些互联网公司了。。。任何产品都会有漏洞。。。</li>
+<li>一定一定要有好的上网习惯，不要什么网站都上，不要什么乱七八糟的东西都下载，提示你要关闭杀毒软件，你丫还真关了，上帝也救不了你。</li>
+<li>不要觉得自己的信息对于黑客没有价值就无所谓，利用你的QQ号诈骗又不是最近才有的事情</li>
+<li>不要什么乱七八糟的网站，APP就注册，这些小网站，小公司往往安全工作都是忽略不计的，如果你泄漏了手机号个人信息又是危险的行为，更何况有人又会设置一样的密码。</li>
+</ol>
+<p>就说到这里了，祝大家都不会被盗号☺</p>
+<p>By Yvan<br>2014-5-14</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/04/2015-9-4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          如何用hexo搭建博客并且绑定域名
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/15/test-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">test</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-8-15" data-title="互联网还有安全吗？从一次简单的爆破密码想到" data-url="http://yoursite.com/2015/08/16/2015-8-15/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Evan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
