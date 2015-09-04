@@ -5,30 +5,24 @@
   
   <title>如何用hexo搭建博客并且绑定域名 | Evan的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##环境
-windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下）
-##安装hexo前的准备
-###Git
-首先安装Git，并配置好SSH，如果你使用github，可以参考SSH配置">
+  <meta name="description" content="环境windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下）
+安装hexo前的准备安装hexo需要git和node.js支持
+Git首先安装Git，并配置好SSH，如果你使用github，可以参考SSH配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何用hexo搭建博客并且绑定域名">
 <meta property="og:url" content="http://yoursite.com/2015/09/04/2015-9-4/index.html">
 <meta property="og:site_name" content="Evan的博客">
-<meta property="og:description" content="##环境
-windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下）
-##安装hexo前的准备
-###Git
-首先安装Git，并配置好SSH，如果你使用github，可以参考SSH配置">
+<meta property="og:description" content="环境windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下）
+安装hexo前的准备安装hexo需要git和node.js支持
+Git首先安装Git，并配置好SSH，如果你使用github，可以参考SSH配置">
 <meta property="og:image" content="http://yoursite.com/images/2015-9-4/cname.png">
 <meta property="og:image" content="http://yoursite.com/images/2015-9-4/wanwang.png">
-<meta property="og:updated_time" content="2015-09-04T03:27:22.826Z">
+<meta property="og:updated_time" content="2015-09-04T04:43:04.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何用hexo搭建博客并且绑定域名">
-<meta name="twitter:description" content="##环境
-windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下）
-##安装hexo前的准备
-###Git
-首先安装Git，并配置好SSH，如果你使用github，可以参考SSH配置">
+<meta name="twitter:description" content="环境windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下）
+安装hexo前的准备安装hexo需要git和node.js支持
+Git首先安装Git，并配置好SSH，如果你使用github，可以参考SSH配置">
   
     <link rel="alternative" href="/atom.xml" title="Evan的博客" type="application/atom+xml">
   
@@ -240,22 +234,26 @@ windows 8.1 64 bit文本编辑器使用的是微软的Visual Code（推荐一下
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##环境</p>
-<p>windows 8.1 64 bit<br>文本编辑器使用的是微软的Visual Code（推荐一下）</p>
-<p>##安装hexo前的准备</p>
-<p>###Git</p>
-<p>首先安装Git，并配置好SSH，如果你使用github，可以参考<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">SSH配置</a></p>
+        <h2 id="环境">环境</h2><p>windows 8.1 64 bit<br>文本编辑器使用的是微软的Visual Code（推荐一下）</p>
+<h2 id="安装hexo前的准备">安装hexo前的准备</h2><p>安装hexo需要git和node.js支持</p>
+<h3 id="Git">Git</h3><p>首先安装Git，并配置好SSH，如果你使用github，可以参考<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">SSH配置</a></p>
 <a id="more"></a>
-<p>###Node.js</p>
-<p>一路下一步即可 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js下载</a></p>
-<p>##安装hexo</p>
-<p>#####安装<br>    npm install hexo</p>
-<p>#####查看版本<br>    hexo version</p>
-<p>#####执行下列命令创建你制定文件夹的文件<br>    hexo init <folder><br>    cd <folder><br>    npm install //安装相关的依赖包</folder></folder></p>
-<p>#####然后你就可以看到如下的指定文件夹<br>    ├── _config.yml //配置文件<br>    ├── package.json//应用程序的信息<br>    ├── scaffolds //模版文件夹<br>    ├── scripts //脚本文件夹<br>    ├── source//用户资源<br>    |   ├── _drafts<br>    |      └── _posts<br>    └── themes//主题资源</p>
-<p>##配置hexo<br>config的具体配置可以参考这里<br><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">config.yml配置</a></p>
-<p>#####常用命令</p>
-<pre><code>hexo help <span class="preprocessor">#查看帮助</span>
+<h3 id="Node-js">Node.js</h3><p>一路下一步即可 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js下载</a></p>
+<h2 id="安装hexo">安装hexo</h2><h5 id="安装">安装</h5><pre><code>npm <span class="keyword">install</span> hexo
+</code></pre><h5 id="查看版本">查看版本</h5><pre><code>hexo <span class="property">version</span>
+</code></pre><h5 id="执行下列命令创建你制定文件夹的文件">执行下列命令创建你制定文件夹的文件</h5><pre><code>hexo init &lt;<span class="built_in">folder</span>&gt;
+cd &lt;<span class="built_in">folder</span>&gt; 
+npm install<span class="comment"> //安装相关的依赖包</span>
+</code></pre><h5 id="然后你就可以看到如下的指定文件夹">然后你就可以看到如下的指定文件夹</h5><pre><code>├── _config.yml <span class="comment">//配置文件</span>
+├── package.json<span class="comment">//应用程序的信息</span>
+├── scaffolds <span class="comment">//模版文件夹</span>
+├── scripts <span class="comment">//脚本文件夹</span>
+├── source<span class="comment">//用户资源</span>
+<span class="string">|   ├── _drafts</span>
+<span class="string">|      └── _posts</span>
+└── themes<span class="comment">//主题资源</span>
+</code></pre><h2 id="配置hexo">配置hexo</h2><p>config的具体配置可以参考这里<br><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">config.yml配置</a></p>
+<h5 id="常用命令">常用命令</h5><pre><code>hexo help <span class="preprocessor">#查看帮助</span>
 hexo init <span class="preprocessor">#初始化一个目录</span>
 hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
 hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
@@ -263,10 +261,9 @@ hexo generate <span class="preprocessor">#生成网页，可以在 public 目录
 hexo <span class="keyword">server</span> <span class="preprocessor">#本地预览，'Ctrl+C'关闭</span>
 hexo deploy <span class="preprocessor">#部署.deploy目录</span>
 hexo clean <span class="preprocessor">#清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**</span>
-</code></pre><p>#####主题<br>我使用的是yilia的主题，作者的博客是<a href="http://litten.github.io/2014/08/31/hexo-theme-yilia/" target="_blank" rel="external">Hexo主题yilia</a></p>
+</code></pre><h5 id="主题">主题</h5><p>我使用的是yilia的主题，作者的博客是<a href="http://litten.github.io/2014/08/31/hexo-theme-yilia/" target="_blank" rel="external">Hexo主题yilia</a></p>
 <p>根据作者的博客应该很容易就可以搭建好这个主题</p>
-<p>##编辑文章</p>
-<p>新建文章</p>
+<h2 id="编辑文章">编辑文章</h2><p>新建文章</p>
 <pre><code>hexo <span class="keyword">new</span> “<span class="keyword">new</span>”
 </code></pre><p>然后就会在source/_post文件夹出现一个新的new.md</p>
 <p>使用markdown编辑器打开（我使用的是markdownPad）<br>打开new.md就会看到如下</p>
@@ -280,8 +277,7 @@ tags:
 </code></pre><p>使用markdown语法编辑之后保存，使用</p>
 <pre><code>hexo-<span class="keyword">server</span>
 </code></pre><p>打开 localhost:0000 查看效果</p>
-<p>##利用githubPages搭建博客</p>
-<blockquote>
+<h2 id="利用githubPages搭建博客">利用githubPages搭建博客</h2><blockquote>
 <p>github会提供给每个用户300mb的空间，这对于搭建自己的博客是个再好不过的免费选择了</p>
 </blockquote>
 <ul>
@@ -290,8 +286,7 @@ tags:
 <li>将”public”文件夹部署到github（我是用的是github for windows，很方便）</li>
 <li>直接访问”你的用户名.io.github”即可</li>
 </ul>
-<p>##将博客绑定到你自己域名</p>
-<blockquote>
+<h2 id="将博客绑定到你自己域名">将博客绑定到你自己域名</h2><blockquote>
 <p>我是用的是万网购买的的域名，29元第一年，并不是很贵</p>
 </blockquote>
 <ul>
